@@ -1,0 +1,9 @@
+{
+  "$schema": "https://github.com/glzr-io/zebar/raw/v2.4.0/resources/settings-schema.json",
+  "startupConfigs": [
+    {
+      "path": "C:\\Users\\Kiran T S\\.glzr\\zebar\\vanilla-clear\\vanilla-clear.zebar.json",
+      "preset": "vanilla-clear"
+    }
+  ]
+}

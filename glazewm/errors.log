@@ -1,0 +1,19 @@
+[2m2024-11-30T02:41:07.897131Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m Another instance of the application is already running.
+[2m2024-11-30T02:45:41.987886Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m window_rules[0]: missing field `match` at line 78 column 5
+[2m2024-11-30T02:49:27.853075Z[0m [31mERROR[0m [2mglazewm::common::commands::shell_exec[0m[2m:[0m [3merr_message[0m[2m=[0m"Failed to execute 'wezterm-gui'.\n\nError: The operation was canceled by the user. (0x800704C7)"
+[2m2024-11-30T06:30:31.860975Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m Another instance of the application is already running.
+[2m2024-11-30T06:30:51.712128Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m did not find expected key at line 194 column 30, while parsing a block mapping at line 190 column 5
+[2m2024-12-01T14:36:02.208683Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m general.startup_commands[0]: invalid type: sequence, expected a string at line 5 column 5
+[2m2024-12-01T14:37:04.203566Z[0m [31mERROR[0m [2mglazewm::common::commands::shell_exec[0m[2m:[0m [3merr_message[0m[2m=[0m"Failed to execute 'spotify'.\n\nError: The operation was canceled by the user. (0x800704C7)"
+[2m2024-12-01T14:37:34.639774Z[0m [31mERROR[0m [2mglazewm::common::commands::shell_exec[0m[2m:[0m [3merr_message[0m[2m=[0m"Failed to execute 'spotify.exe'.\n\nError: The operation was canceled by the user. (0x800704C7)"
+[2m2024-12-01T15:52:00.358980Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m Another instance of the application is already running.
+[2m2024-12-01T15:54:04.897663Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m keybindings[13].commands: unrecognized subcommand
+ at line 191 column 15
+[2m2024-12-01T15:55:10.906217Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m keybindings[13].commands: unrecognized subcommand
+ at line 191 column 15
+[2m2024-12-01T15:58:02.367149Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m did not find expected key at line 136 column 5, while parsing a block mapping at line 119 column 5
+[2m2024-12-01T15:58:29.340610Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m did not find expected key at line 120 column 7, while parsing a block mapping at line 119 column 5
+[2m2024-12-01T15:58:52.631055Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m did not find expected key at line 120 column 7, while parsing a block mapping at line 119 column 5
+[2m2024-12-01T17:38:21.362686Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m did not find expected key at line 120 column 7, while parsing a block mapping at line 119 column 5
+[2m2024-12-01T17:39:20.424176Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m did not find expected key at line 120 column 7, while parsing a block mapping at line 119 column 5
+[2m2024-12-01T17:43:45.376487Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m did not find expected ',' or '}' at line 122 column 33, while parsing a flow mapping at line 121 column 25
