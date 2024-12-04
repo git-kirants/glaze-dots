@@ -1,0 +1,18 @@
+{
+  "name": "now",
+  "version": "1.2.3",
+  "description": "nowplaying",
+  "main": "nowplaying.js",
+  "scripts": {
+    "test": "node nowplaying.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "",
+  "license": "ISC"
+}

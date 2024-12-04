@@ -39,7 +39,7 @@ gaps:
   scale_with_dpi: true
 
   # Gap between adjacent windows.
-  inner_gap: '8px'
+  inner_gap: '4px'
 
   # Gap between windows and the screen edge.
   outer_gap:
@@ -56,6 +56,7 @@ window_effects:
     border:
       enabled: true
       color: '#8dbcff'
+      thickness: '5px'
 
     # Remove the title bar from the window's frame. Note that this can
     # cause rendering issues for some applications.
@@ -66,7 +67,6 @@ window_effects:
     # ** Exclusive to Windows 11 due to API limitations.
     corner_style:
       enabled: false
-      # Allowed values: 'square', 'rounded', 'small_rounded'.
       style: 'square'
 
   # Visual effects to apply to non-focused windows.
@@ -74,6 +74,7 @@ window_effects:
     border:
       enabled: true
       color: '#a1a1a1'
+      thickness: '5px'
     hide_title_bar:
       enabled: false
     corner_style:
@@ -120,6 +121,8 @@ window_rules:
     match: 
       - window_process: {equals: "zen"}
         window_class: {equals: "MozillaWindowClass"}
+      - window_process: { equals: "msedge" }
+        window_class: { equals: "Chrome_WidgetWin_1" }
   - commands: ["move --workspace 9","focus --workspace 9"]
     match: 
       - window_process: {equals: "Spotify"}
@@ -128,7 +131,7 @@ window_rules:
     match:
       # Ignores any Zebar windows.
       - window_process: { equals: 'zebar' }
-
+      - window_process: { equals: 'Valorant'}
       # Ignores picture-in-picture windows for browsers.
       - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
         window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }

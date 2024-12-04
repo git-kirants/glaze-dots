@@ -1,9 +1,8 @@
 @import "https://www.nerdfonts.com/assets/css/webfont.css";
 
 body {
-  background: rgb(75 115 255 / 10%);
+  background: rgba(0, 0, 0, 0.332);
   margin-right: 1px;
-  padding: 1px 1px;
   color: #cbe3f7;
   font-family: ui-monospace, monospace;
   font-size: 12px;
@@ -27,7 +26,7 @@ body,
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   height: 100%;
-  padding: 2px 0.5vw;
+  padding: 1px 0.5vw;
 }
 
 .left,
@@ -43,6 +42,7 @@ body,
 
 .right {
   justify-self: end;
+  gap: 8px;
 }
 
 .binding-mode,
@@ -58,9 +58,12 @@ body,
   display: flex;
   align-items: center;
 }
-
+.network {
+  margin-right: 0;
+  padding-right: 0;
+}
 .workspace {
-  background: rgb(75 115 255 / 10%);
+  background: rgb(75 115 255 / 0%);
   margin-right: 4px;
   padding: 4px 4px;
   color: rgb(255 255 255 / 90%);
@@ -98,7 +101,7 @@ body,
   position: absolute;
   font-size: 7px;
   left: -8px;
-  top: 3px;
+  top: 1px;
 }
 
 i {

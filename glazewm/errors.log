@@ -17,3 +17,4 @@
 [2m2024-12-01T17:38:21.362686Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m did not find expected key at line 120 column 7, while parsing a block mapping at line 119 column 5
 [2m2024-12-01T17:39:20.424176Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m did not find expected key at line 120 column 7, while parsing a block mapping at line 119 column 5
 [2m2024-12-01T17:43:45.376487Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m did not find expected ',' or '}' at line 122 column 33, while parsing a flow mapping at line 121 column 25
+[2m2024-12-04T07:24:14.904666Z[0m [31mERROR[0m [2mglazewm[0m[2m:[0m did not find expected key at line 125 column 7, while parsing a block mapping at line 124 column 5
