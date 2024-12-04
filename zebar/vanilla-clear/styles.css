@@ -62,6 +62,14 @@ body,
   margin-right: 0;
   padding-right: 0;
 }
+.cpu {
+  margin-right: 0;
+  padding-right: 0;
+}
+.memory {
+  margin-right: 0;
+  padding-right: 0;
+}
 .workspace {
   background: rgb(75 115 255 / 0%);
   margin-right: 4px;

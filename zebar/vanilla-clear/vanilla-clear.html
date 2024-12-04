@@ -46,13 +46,20 @@
         network: { type: "network" },
         glazewm: { type: "glazewm" },
         cpu: { type: "cpu" },
-        date: { type: "date", formatting: "EEE d MMM t" },
+        date: { type: "date", formatting: "EEE d MMM h:mm a" },
         battery: { type: "battery" },
         memory: { type: "memory" },
         weather: { type: "weather" },
         keyboard: { type: "keyboard" },
       });
-
+      
+      
+      function getUsedRAM(memoryOutput) {
+      if (!memoryOutput || !memoryOutput.total || !memoryOutput.used) return "N/A";
+      const usedGB = (memoryOutput.used / (1024 ** 3)).toFixed(2); // Convert bytes to GB
+      const totalGB = (memoryOutput.total / (1024 ** 3)).toFixed(2); // Convert bytes to GB
+      return `${usedGB} GB / ${totalGB} GB`;
+      } 
       // Spotify Now Playing Component
       function SpotifyNowPlaying({ glazewm }) {
         const [spotifyState, setSpotifyState] = useState(null);
@@ -161,6 +168,24 @@
                     <i className="nf nf-md-power_plug charging-icon"></i>
                   )}
                   {Math.round(output.battery.chargePercent)}%
+                </div>
+              )}
+              <span className="verticaldev">|</span>
+              {output.cpu && (
+                <div className="cpu">
+                  <span>CPU:</span>
+
+                  {/* Change the text color if the CPU usage is high. */}
+                  <span className={output.cpu.usage > 85 ? "high-usage" : ""}>
+                    {Math.round(output.cpu.usage)}%
+                  </span>
+                </div>
+              )}
+              <span className="verticaldev">|</span>
+              {output.memory && (
+                <div className="memory">
+                  <span>RAM:</span>
+                  {Math.round(output.memory.usage)}%
                 </div>
               )}
             </div>
