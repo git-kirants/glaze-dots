@@ -18,20 +18,73 @@
       crossorigin="anonymous"
     ></script>
   
-    <!-- Nerd Fonts -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@latest/css/nerd-fonts.css"
+    <!-- Tabler Icons -->
+    <link 
+      rel="stylesheet" 
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" 
     />
+    
+    <!-- Base Styles -->
+    <style>
+     .app {
+  display: flex;
+  justify-content: space-between; /* Ensures left and right are at extremes */
+  align-items: center;
+  padding: 0 12px;
+  height: 100%;
+  position: relative;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.center {
+  position: absolute; /* Ensures true center alignment */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.workspaces {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.workspace {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 8px;
   
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      integrity="sha512-dy0H/JyWj3G8Bd1ApBQKsFK26tFOZUsUPww6E5hxKrh9LBVNB8l6fHy/DIB6v39jCW9dv8xENmbOCjFu5ci59g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+  border: none;
+  121background: none;
+  color: inherit;
+}
+.workspace.focused {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+      }
+
+      .workspace.displayed {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+      }
+
+      
+    </style>
   </head>
   
   <body>
@@ -46,67 +99,59 @@
         network: { type: "network" },
         glazewm: { type: "glazewm" },
         cpu: { type: "cpu" },
-        date: { type: "date", formatting: "EEE d MMM h:mm a" },
+        date: { type: "date", formatting: "EEEE d MMM h:mm a" },
         battery: { type: "battery" },
         memory: { type: "memory" },
         weather: { type: "weather" },
         keyboard: { type: "keyboard" },
       });
-      
-      
-      function getUsedRAM(memoryOutput) {
-      if (!memoryOutput || !memoryOutput.total || !memoryOutput.used) return "N/A";
-      const usedGB = (memoryOutput.used / (1024 ** 3)).toFixed(2); // Convert bytes to GB
-      const totalGB = (memoryOutput.total / (1024 ** 3)).toFixed(2); // Convert bytes to GB
-      return `${usedGB} GB / ${totalGB} GB`;
-      } 
+
       // Spotify Now Playing Component
-      function SpotifyNowPlaying({ glazewm }) {
-        const [spotifyState, setSpotifyState] = useState(null);
+function SpotifyNowPlaying({ glazewm }) {
+  const [spotifyState, setSpotifyState] = useState(null);
+  const MAX_LENGTH = 25; // Maximum allowed length for the song name
 
-        useEffect(() => {
-          if (!glazewm) return;
+  useEffect(() => {
+    if (!glazewm) return;
 
-          // Function to check Spotify windows
-          const detectSpotify = () => {
-            let spotifyInfo = null;
+    const detectSpotify = () => {
+      let spotifyInfo = null;
 
-            for (const workspace of glazewm.allWorkspaces || []) {
-              for (const child of workspace.children || []) {
-                if (child.type === "window" && child.processName.toLowerCase() === "spotify") {
-                  if (child.title.toLowerCase() === "spotify premium") {
-                    spotifyInfo = { playing: false, message: "Nothing is playing" };
-                  } else {
-                    spotifyInfo = { playing: true, title: child.title };
-                  }
-                }
-              }
+      for (const workspace of glazewm.allWorkspaces || []) {
+        for (const child of workspace.children || []) {
+          if (child.type === "window" && child.processName.toLowerCase() === "spotify") {
+            if (child.title.toLowerCase() === "spotify premium") {
+              spotifyInfo = { playing: false, message: "Nothing is playing" };
+            } else {
+              spotifyInfo = { playing: true, title: child.title };
             }
-
-            setSpotifyState(spotifyInfo);
-          };
-
-          detectSpotify();
-        }, [glazewm]);
-
-        if (!spotifyState) return null;
-
-        return (
-          <div className="spotify-now-playing">
-            {spotifyState.playing ? (
-              <>
-                <i className="ti ti-music text-zb-spotify-playing"></i>
-                <span className="max-w-md truncate">{spotifyState.title}</span>
-              </>
-            ) : (
-              <>
-                <i className="ti ti-music-off text-zb-spotify-paused"></i>
-                nothing is playing
-              </>
-            )}
-          </div>
-        );
+          }
+        }
       }
+
+      setSpotifyState(spotifyInfo);
+    };
+
+    detectSpotify();
+  }, [glazewm]);
+
+  const truncateTitle = (title) => {
+    return title.length > MAX_LENGTH
+      ? title.substring(0, MAX_LENGTH) + "..."
+      : title;
+  };
+
+  if (!spotifyState) return null;
+
+  return (
+    <div className="flex items-center gap-2">
+      <i className={`ti ti-${spotifyState.playing ? 'music' : 'music-off'}`}></i>
+      <span className="max-w-32 truncate">
+        {spotifyState.playing ? truncateTitle(spotifyState.title) : 'Nothing playing'}
+      </span>
+    </div>
+  );
+}
 
       // Main Application Component
       function App() {
@@ -128,67 +173,58 @@
         return (
           <div className="app">
             <div className="left">
-              {output.glazewm && (
-                <div className="workspaces">
-                  {output.glazewm.currentWorkspaces.map((workspace) => (
-                    <button
-                      className={`workspace ${workspace.hasFocus ? "focused" : ""} ${
-                        workspace.isDisplayed ? "displayed" : ""
-                      }`}
-                      onClick={() =>
-                        output.glazewm.runCommand(`focus --workspace ${workspace.name}`)
-                      }
-                      key={workspace.name}
-                    >
-                      {workspace.name === "9" ? (
-                        <span style={{ all: "unset", color: "white" }}>♫</span>
-                      ) : (
-                        workspace.displayName ?? workspace.name
-                      )}
-                    </button>
-                  ))}
+              {output.glazewm && <SpotifyNowPlaying glazewm={output.glazewm} />}
+
+              {output.memory && (
+                <div className="flex items-center gap-2">
+                  <i className="ti ti-device-desktop-analytics"></i>
+                  <span>RAM: {Math.round(output.memory.usage)}%</span>
+                </div>
+              )}
+              {output.battery && (
+                <div className="flex items-center gap-2">
+                  {output.battery.isCharging ? (
+                    <i className="ti ti-plug"></i>
+                  ) : (
+                    <i className="ti ti-battery"></i>
+                  )}
+                  <span>{Math.round(output.battery.chargePercent)}%</span>
                 </div>
               )}
             </div>
 
-            <div className="center">{output.date?.formatted}</div>
+            {/* Spacer to balance the center */}
+  <div className="spacer"></div>
+
+<div className="center">
+  {output.glazewm && (
+    <div className="workspaces">
+      {output.glazewm.currentWorkspaces.map((workspace) => (
+        <button
+          className={`workspace ${workspace.hasFocus ? "focused" : ""} ${
+            workspace.isDisplayed ? "displayed" : ""
+          }`}
+          onClick={() =>
+            output.glazewm.runCommand(`focus --workspace ${workspace.name}`)
+          }
+          key={workspace.name}
+        >
+          {workspace.name === "9" ? (
+            <span style={{ all: "unset", color: "white" }}>♫</span>
+          ) : (
+            workspace.displayName ?? workspace.name
+          )}
+        </button>
+      ))}
+    </div>
+  )}
+</div>
 
             <div className="right">
-              <SpotifyNowPlaying glazewm={output.glazewm} />
-              <span className="verticaldev">|</span>
-              {output.network && (
-                <div className="network">
-                  {getNetworkName(output.network)}
-                </div>
-              )}
-              <span className="verticaldev">|</span>
-              {output.battery && (
-                <div className="battery">
-                  {output.battery.isCharging && (
-                    <i className="nf nf-md-power_plug charging-icon"></i>
-                  )}
-                  {Math.round(output.battery.chargePercent)}%
-                </div>
-              )}
-              <span className="verticaldev">|</span>
-              {output.cpu && (
-                <div className="cpu">
-                  <span>CPU:</span>
+              
 
-                  {/* Change the text color if the CPU usage is high. */}
-                  <span className={output.cpu.usage > 85 ? "high-usage" : ""}>
-                    {Math.round(output.cpu.usage)}%
-                  </span>
-                </div>
-              )}
-              <span className="verticaldev">|</span>
-              {output.memory && (
-                <div className="memory">
-                  <span>RAM:</span>
-                  {Math.round(output.memory.usage)}%
-                </div>
-              )}
-            </div>
+              
+              {output.date?.formatted}</div>
           </div>
         );
       }

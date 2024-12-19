@@ -10,7 +10,7 @@ window/bar:
   # Width of the window in physical pixels.
   width: "{{ self.args.MONITOR_WIDTH }}"
   # Height of the window in physical pixels.
-  height: "40"
+  height: "45"
   # X-position of the window in physical pixels.
   position_x: "{{ self.args.MONITOR_X }}"
   # Y-position of the window in physical pixels.

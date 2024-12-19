@@ -9,7 +9,7 @@ general:
   shutdown_commands: ['shell-exec taskkill /IM zebar.exe /F']
 
   # Commands to run after the WM config is reloaded.
-  config_reload_commands: []
+  config_reload_commands: ['shell-exec zebar ']
 
   # Whether to automatically focus windows underneath the cursor.
   focus_follows_cursor: false
@@ -39,14 +39,14 @@ gaps:
   scale_with_dpi: true
 
   # Gap between adjacent windows.
-  inner_gap: '4px'
+  inner_gap: '2px'
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: '30px'
-    right: '5px'
-    bottom: '5px'
-    left: '5px'
+    top: '28px'
+    right: '0.5px'
+    bottom: '0px'
+    left: '0.5px'
 
 window_effects:
   # Visual effects to apply to the focused window.
@@ -54,7 +54,7 @@ window_effects:
     # Highlight the window with a colored border.
     # ** Exclusive to Windows 11 due to API limitations.
     border:
-      enabled: true
+      enabled: false
       color: '#8dbcff'
       thickness: '5px'
 
@@ -66,14 +66,14 @@ window_effects:
     # Change the corner style of the window's frame.
     # ** Exclusive to Windows 11 due to API limitations.
     corner_style:
-      enabled: false
+      enabled: true
       style: 'square'
 
   # Visual effects to apply to non-focused windows.
   other_windows:
     border:
       enabled: true
-      color: '#a1a1a1'
+      color: '#eeeeee'
       thickness: '5px'
     hide_title_bar:
       enabled: false
