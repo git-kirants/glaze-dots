@@ -39,14 +39,14 @@ gaps:
   scale_with_dpi: true
 
   # Gap between adjacent windows.
-  inner_gap: '2px'
+  inner_gap: '3px'
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: '28px'
-    right: '0.5px'
-    bottom: '0px'
-    left: '0.5px'
+    top: '29px'
+    right: '1px'
+    bottom: '1px'
+    left: '1px'
 
 window_effects:
   # Visual effects to apply to the focused window.
@@ -54,8 +54,8 @@ window_effects:
     # Highlight the window with a colored border.
     # ** Exclusive to Windows 11 due to API limitations.
     border:
-      enabled: false
-      color: '#8dbcff'
+      enabled: true
+      color: '#89B4FA'
       thickness: '5px'
 
     # Remove the title bar from the window's frame. Note that this can
@@ -64,15 +64,15 @@ window_effects:
       enabled: false
 
     # Change the corner style of the window's frame.
-    # ** Exclusive to Windows 11 due to API limitations.
+    # ** Exclusive to 1 11 due to API limitations.
     corner_style:
-      enabled: true
+      enabled: false
       style: 'square'
 
   # Visual effects to apply to non-focused windows.
   other_windows:
     border:
-      enabled: true
+      enabled: false
       color: '#eeeeee'
       thickness: '5px'
     hide_title_bar:
@@ -119,8 +119,6 @@ workspaces:
 window_rules:
   - commands: ["move --workspace 2","focus --workspace 2"]
     match: 
-      - window_process: {equals: "zen"}
-        window_class: {equals: "MozillaWindowClass"}
       - window_process: { equals: "msedge" }
         window_class: { equals: "Chrome_WidgetWin_1" }
   - commands: ["move --workspace 9","focus --workspace 9"]

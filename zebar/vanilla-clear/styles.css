@@ -1,9 +1,9 @@
 @import "https://www.nerdfonts.com/assets/css/webfont.css";
 
 body {
-  background: rgba(0, 0, 0, 0.9);
+  background: #1E1E2E; /* Base */
   margin-right: 1px;
-  color: #cbe3f7;
+  color: #CDD6F4; /* Text */
   font-family: ui-monospace, monospace;
   font-size: 12px;
   border: none;
@@ -18,7 +18,7 @@ body,
 }
 
 #root {
-  background: rgba(0, 0, 0, 15%);
+  background: rgba(30, 30, 46, 0.15); /* Base with transparency */
 }
 
 .app {
@@ -58,34 +58,36 @@ body,
   display: flex;
   align-items: center;
 }
+
 .network {
   margin-right: 0;
   padding-right: 0;
 }
+
 .cpu {
   margin-right: 0;
   padding-right: 0;
 }
+
 .memory {
   margin-right: 0;
   padding-right: 0;
 }
+
 .workspace {
-  background: rgb(75 115 255 / 0%);
+  background: rgba(75, 115, 255, 0); /* Transparent */
   margin-right: 4px;
   padding: 4px 4px;
-  color: rgb(255 255 255 / 90%);
+  color: rgba(255, 255, 255, 0.9); /* Text */
   border: none;
   border-radius: 4px;
   cursor: pointer;
-
-
 }
 
 .binding-mode,
 .tiling-direction {
-  background: rgb(255 255 255 / 15%);
-  color: rgb(255 255 255 / 90%);
+  background: rgba(255, 255, 255, 0.15); /* Overlay1 */
+  color: rgba(255, 255, 255, 0.9); /* Text */
   border-radius: 2px;
   line-height: 2;
   padding: 4px 8px;
@@ -98,7 +100,7 @@ body,
 }
 
 .cpu .high-usage {
-  color: #900029;
+  color: #F38BA8; /* Red */
 }
 
 .battery {
@@ -113,6 +115,6 @@ body,
 }
 
 i {
-  color: rgb(255 255 255 / 90%);
+  color: rgba(255, 255, 255, 0.9); /* Text */
   margin-right: 7px;
 }
